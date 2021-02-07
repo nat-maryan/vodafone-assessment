@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import DefaultLayout from './hoc/DefaultLayout';
 import Home from './containers/Home';

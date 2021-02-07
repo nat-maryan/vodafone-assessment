@@ -29,25 +29,37 @@ const CardsContainer = styled.div`
     flex-wrap: wrap;
 `;
 
-const SecondPage = ()=> {
+const SecondPage = () => {
     const [pageData, setPageData] = useState([]);
     const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const getPageData = async () => {
         let items = [];
         try {
-            items = await APIService.getSecondPageData();
-            setPageData(items.data);
-            console.log(pageData);
+             items = await APIService.getSecondPageData();
+            return items.data;
 
-        } catch {
+        } catch (e) {
             console.log('Could not retrieve Data');
-            setError(true);
+             setError(true);
         }
-    }
+    };
 
     useEffect(() => {
-        getPageData();
+        let mounted = true;
+
+        getPageData().then((data)=> {
+            if(mounted){
+                setPageData(data);
+                setLoading(false);
+            }
+        });
+
+        return function cleanup() {
+            mounted = false
+        }
+
     }, []);
 
     if (error) {
@@ -57,22 +69,28 @@ const SecondPage = ()=> {
     }
     return (
         <PageContainer>
-            <div className="page-title">
-                {pageData[0].description}
-            </div>
-            <CardsContainer>
-            {map(pageData[0].tiles, (item, index) => {
-                        return (
-                            <CardItem 
-                            key={index}
-                                icon={item.icon}
-                                title={item.title}
-                                description={item.description}
-                                link={item.link}
-                            />
-                        )
-                    })}
-            </CardsContainer>
+            {loading && (<div> Loading..... </div>)}
+            {!loading &&
+                (<>
+                    <div className="page-title">
+                        {pageData[0].description}
+                    </div>
+                    <CardsContainer>
+                        {map(pageData[0].tiles, (item, index) => {
+                            return (
+                                <CardItem
+                                    key={index}
+                                    icon={item.icon}
+                                    title={item.title}
+                                    description={item.description}
+                                    link={item.link}
+                                />
+                            )
+                        })}
+                    </CardsContainer>
+                </>
+                )}
+
         </PageContainer>
     )
 };

@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import map from 'lodash/map';
 import ErrorComponent from './../ErrorComponent';
 import SliderItem from './components/SliderItem';
-import { isEmpty } from 'lodash/isEmpty';
 
 const SliderWrapper = styled.div`
     position: relative;
