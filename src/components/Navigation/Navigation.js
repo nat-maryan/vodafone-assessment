@@ -43,7 +43,6 @@ const Navigation = () => {
         try {
             menuItems = await APIService.getMenuItems();
             setMenuItems(menuItems.data);
-            console.log(menuItems);
 
         } catch {
             console.log('Could not retrieve Menu Items');
@@ -64,9 +63,9 @@ const Navigation = () => {
         <HeaderStyled>
             <nav>
                 <ul>
-                    {map(menuItems, (item) => {
+                    {map(menuItems, (item, index) => {
                         return (
-                            <li>
+                            <li key={index}>
                                 <NavLink
                                     to={`${item.title === 'Home' ? '/' : `/${item.title.replace(/\s/g, '')}/`}`}
                                     exact>

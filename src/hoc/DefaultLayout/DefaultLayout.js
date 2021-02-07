@@ -1,5 +1,6 @@
 import Navigation from './../../components/Navigation';
 import styled from 'styled-components';
+import Slider from './../../components/Slider';
 
 const MainStyled = styled.main`
      background: rgb(248,250,255);
@@ -15,6 +16,7 @@ const DefaultLayout = ({ children }) => {
     return (
         <MainStyled className="Content">
             <Navigation />
+            <Slider />
             {children}
         </MainStyled>
     )
