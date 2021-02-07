@@ -1,6 +1,13 @@
-const SecondSection = () => {
-    return(
-        <div>Second section</div>
+
+import Form from './components/Form';
+
+const SecondSection = ({ data }) => {
+    console.log(data);
+    const { buttonText, formLabels, formText } = data;
+    return (
+        <>
+        <Form buttonText={buttonText} formLabels={formLabels} formText={formText}/>
+        </>
     )
 }
 
