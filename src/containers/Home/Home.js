@@ -32,16 +32,23 @@ const SectionsNavBar = styled.ul`
         display: inline-block;
         padding-right: 10px;
         cursor: pointer;
+        opacity: 0.5;
+        position: relative;
+    }
+
+    li.active {
+        opacity: 1;
+    }
+
+    li.active:after {
+       content:'•';
+    color: rgb(36,152,235);
+       position:absolute;
+       left: 50%;
+    transform: translate(-50%, 0);
+    top: 32px;
     }
 `;
-
-const CardsContainer = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-`;
-
 
 const Home = () => {
     const [pageData, setPageData] = useState([]);
@@ -109,7 +116,7 @@ const Home = () => {
                     <SectionsNavBar>
                         {map(pageData[0].sections, (item, index) => {
                             return (
-                                <li key={index} onClick={() => handleSectionsClick(index)}>
+                                <li className={`${index === activeSection - 1 ? 'active' : ''}`} key={index} onClick={() => handleSectionsClick(index)}>
                                     <p>{`Section ${index + 1}`}</p>
                                 </li>
                             )

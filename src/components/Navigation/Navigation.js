@@ -23,16 +23,27 @@ const HeaderStyled = styled.header`
         font-size: 15px;
     }
 
+
     a{
         text-decoration: none;
         color: #fff;  
         opacity: 0.5;
+        position: relative;
         }
 
         a.active{
         opacity: 1;
         color: #fff;   
-        }   
+        }  
+        
+        a.active:after {
+       content:'•';
+    color: green;
+       position:absolute;
+       left: 50%;
+    transform: translate(-50%, 0);
+    top: 22px;
+    }
 `;
 
 const Navigation = () => {
