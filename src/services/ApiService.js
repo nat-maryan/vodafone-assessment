@@ -8,7 +8,7 @@ export default class APIService {
     }
 
     static getSecondPageData() {
-        return axios.post(`${this.baseUrl}page`);
+        return axios.get(`${this.baseUrl}page`);
     }
 
     static getMenuItems() {

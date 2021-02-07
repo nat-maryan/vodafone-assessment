@@ -4,8 +4,13 @@ const SliderItemContainer = styled.div`
     height: 190px;
 
     .title {
-        font-size: 32px;
+        font-size: 52px;
         padding: 25px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+
     }
 `;
 

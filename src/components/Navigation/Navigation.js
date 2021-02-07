@@ -12,7 +12,7 @@ const HeaderStyled = styled.header`
 
     ul{
         margin: 0;
-        padding: 50px 0;
+        padding: 42px 0;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -20,6 +20,7 @@ const HeaderStyled = styled.header`
 
     li {
         display: inline-block;
+        font-size: 15px;
     }
 
     a{
