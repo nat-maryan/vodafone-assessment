@@ -3,6 +3,8 @@ import map from 'lodash/map';
 import APIService from './../../services/ApiService';
 import ErrorComponent from '../../components/ErrorComponent';
 import styled from 'styled-components';
+import FirstSection from './FirstSection';
+import SecondSection from './SecondSection';
 
 const HomeContainer = styled.div`
     padding: 100px 0;
@@ -45,6 +47,7 @@ const Home = () => {
     const [pageData, setPageData] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [activeSection, setActiveSection] = useState(1);
 
     const getPageData = async () => {
         let items = [];
@@ -74,6 +77,21 @@ const Home = () => {
 
     }, []);
 
+    const renderSection = (section, data) => {
+        switch (section) {
+            case 1:
+                return (<FirstSection data={data} />);
+            case 2:
+                return (<SecondSection data={data} />);
+            default:
+                return (<FirstSection data={data} />);
+        }
+    }
+
+    const handleSectionsClick = (section) => {
+        return setActiveSection(section + 1);
+    }
+
     if (error) {
         return (
             <ErrorComponent />
@@ -89,14 +107,17 @@ const Home = () => {
                         {pageData[0].description}
                     </div>
                     <SectionsNavBar>
-                    {map(pageData[0].sections, (item, index) => {
+                        {map(pageData[0].sections, (item, index) => {
                             return (
-                                <li key={index}>
-                                    <p>{`Section ${index+1}`}</p>
+                                <li key={index} onClick={() => handleSectionsClick(index)}>
+                                    <p>{`Section ${index + 1}`}</p>
                                 </li>
                             )
                         })}
                     </SectionsNavBar>
+
+                    {renderSection(activeSection, pageData[0].sections[activeSection - 1])}
+
 
                 </>
             )}
