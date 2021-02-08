@@ -1,12 +1,17 @@
 import map from 'lodash/map';
 import styled from 'styled-components';
-import ImageContainer from './components/ImageContainer';
+import ImageContainer from './components/FirstSection/ImageContainer';
 
 const ImagesWrapper = styled.div`
     display: flex;
     width: 80%;
     align-items: start;
     justify-content: space-evenly;
+    padding-top: 32px;
+
+    @media only screen and (max-width: 1024px) {
+        flex-wrap: wrap;
+    }
  
 
     .second-group {

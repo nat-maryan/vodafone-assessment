@@ -9,6 +9,7 @@ const InputContainer  = styled.div`
     border: none;
     padding: 10px;
     background-color: rgba(0,0,0, 0.03);
+    width: 250px;
   }
 `;
 const FormHelperText = styled.p`
@@ -32,7 +33,7 @@ const Input = ({ formLabel, value, name, onChange, error, touch, onFocusOut, val
         }
       />
 
-      {!!touch && !!error && valid && (
+      {!!touch && !!error && !valid && (
         <FormHelperText data-testid={`error_${name}`}>{error}</FormHelperText>
       )}
     </InputContainer>

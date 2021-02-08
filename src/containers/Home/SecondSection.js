@@ -1,25 +1,41 @@
 
-import Form from './components/Form';
-import { Slider } from 'rsuite';
-import "rsuite/dist/styles/rsuite-default.min.css";
+import Form from './components/SecondSection/Form';
+import styled from 'styled-components';
+import GraphSliderContainer from './components/SecondSection/GraphSliderContainer';
+
+
+
+const SecondSectionContainer = styled.div`
+    display: flex;
+    text-align: center;
+    padding-top: 32px;
+    flex-wrap: wrap;
+    width: 80%;
+
+    .content {
+        width: 50%;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .content {
+        width: 100%;
+    }
+}
+`;
 
 const SecondSection = ({ data }) => {
     console.log(data);
-    const { buttonText, formLabels, formText } = data;
+    const { buttonText, formLabels, formText, title, stats, graphText } = data;
     return (
-        <>
-
-            <Form buttonText={buttonText} formLabels={formLabels} formText={formText} />
-            <div style={{width: '50%'}}>
-                <Slider
-                    progress
-                    defaultValue={50}
-                    onChange={value => {
-                        console.log(value);
-                    }}
-                />
+        <SecondSectionContainer>
+    
+            <div className="content">
+                <GraphSliderContainer title={title} stats={stats} graphText={graphText} />
             </div>
-        </>
+            <div className="content">
+                <Form buttonText={buttonText} formLabels={formLabels} formText={formText} />
+            </div>
+        </SecondSectionContainer>
     )
 }
 

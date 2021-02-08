@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Eye from '../../../assets/eye.png';
+import Eye from '../../../../assets/eye.png';
 
 const ImageStyled = styled.div`
     width: 365px;

@@ -1,10 +1,20 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Input from './Input';
-import {validatePhoneNumber, validateEmail, validatePassword} from '../../../helpers/validationHelpers';
+import {validatePhoneNumber, validateEmail, validatePassword} from '../../../../helpers/validationHelpers';
 
+const FormContainer = styled.div`
+    .form-title {
+        font-size: 28px;
+    color: #071e57;
+    }
 
-const FormStyled = styled.form`
+    .form-text{
+        padding: 15px 25px;
+    }
+`;
+
+const FormStyled = styled.div`
     width: 100%;
     text-align: center;
 `;
@@ -118,9 +128,9 @@ const Form = ({ buttonText, formLabels, formText }) => {
     }
 
     return (
-        <>
-            <div>{formText}</div>
-            <p>We work with leaders, corporations and start ups worlwide. How can we help you?</p>
+        <FormContainer>
+            <div className="form-title">{formText}</div>
+            <p className="form-text">We work with leaders, corporations and start ups worlwide. How can we help you?</p>
             <FormStyled>
                 <Input
                     formLabel={formLabels[0]}
@@ -192,7 +202,7 @@ const Form = ({ buttonText, formLabels, formText }) => {
                     onClick={()=> validateForm()}
                 >{buttonText}</ButtonStyled>
             </FormStyled>
-        </>
+        </FormContainer>
 
     )
 }
