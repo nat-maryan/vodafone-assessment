@@ -4,23 +4,30 @@ import map from 'lodash/map';
 import APIService from './../../services/ApiService';
 import ErrorComponent from '../ErrorComponent';
 import styled from 'styled-components';
+import Select from 'react-select';
 
 const HeaderStyled = styled.header`
     width: 100%;
     background-color:rgb(64, 72,89);
     color: #fff;
+    display: flex;
+    padding: 42px 0;
+    justify-content: space-evenly;
+    align-items: center;
+
 
     ul{
         margin: 0;
-        padding: 42px 0;
+     
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     li {
         display: inline-block;
         font-size: 15px;
+        padding-right: 25px;
     }
 
 
@@ -46,7 +53,17 @@ const HeaderStyled = styled.header`
     }
 `;
 
+const SelectStyled = styled(Select)`
+    width: 10%;
+`;
+
 const Navigation = () => {
+
+    const options = [
+        { label: 'Home', value: '/' },
+        { label: 'Page 2', value: '/page2' }
+    ];
+
     const [menuItems, setMenuItems] = useState([]);
     const [error, setError] = useState(false);
 
@@ -62,8 +79,13 @@ const Navigation = () => {
         }
     }
 
+    const constractSelectOptions = (items) => {
+
+    }
+
     useEffect(() => {
         getMenuItems();
+        constractSelectOptions(menuItems);
     }, []);
 
     if (error) {
@@ -88,6 +110,10 @@ const Navigation = () => {
                     })}
                 </ul>
             </nav>
+            <SelectStyled
+                options={options}
+                onChange={opt => console.log(opt.label, opt.value)}
+            />
         </HeaderStyled >
     );
 }
