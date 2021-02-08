@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import map from 'lodash/map';
 import APIService from './../../services/ApiService';
 import ErrorComponent from '../ErrorComponent';
 import styled from 'styled-components';
 import Select from 'react-select';
+import Search from '../../assets/search.png';
+import Exit from '../../assets/exit.png';
 
 const HeaderStyled = styled.header`
     width: 100%;
@@ -14,7 +16,23 @@ const HeaderStyled = styled.header`
     padding: 42px 0;
     justify-content: space-evenly;
     align-items: center;
+    position: relative;
 
+    img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .exit {
+        position: absolute;
+        left: 77%;
+    }
+
+    @media only screen and (max-width: 870px) {
+        .exit, .search {
+        display: none;
+        }
+    }
 
     ul{
         margin: 0;
@@ -55,9 +73,27 @@ const HeaderStyled = styled.header`
 
 const SelectStyled = styled(Select)`
     width: 10%;
+    color: '#fff';
+
+    @media only screen and (max-width: 870px) {
+        display: none;
+    }
+
+    div {
+        border: none;
+    }
+
+    input {
+        color: #fff;
+    }
+
+    span {
+        display: none;
+    }
+
 `;
 
-const Navigation = () => {
+const Navigation = ({ ...props }) => {
 
     const options = [
         { label: 'Home', value: '/' },
@@ -66,6 +102,7 @@ const Navigation = () => {
 
     const [menuItems, setMenuItems] = useState([]);
     const [error, setError] = useState(false);
+    const [showSelect, setShowSelect] = useState(false);
 
     const getMenuItems = async () => {
         let menuItems = [];
@@ -79,14 +116,15 @@ const Navigation = () => {
         }
     }
 
-    const constractSelectOptions = (items) => {
-
-    }
-
     useEffect(() => {
         getMenuItems();
-        constractSelectOptions(menuItems);
     }, []);
+
+
+    const redirectTo = (path) => {
+        const { history } = props;
+        return history.push({ pathname: `${path}` })
+    }
 
     if (error) {
         return (
@@ -110,12 +148,38 @@ const Navigation = () => {
                     })}
                 </ul>
             </nav>
-            <SelectStyled
+            {!showSelect && (
+            <div className="search" onClick={()=> setShowSelect(true)}>
+                <img src={Search} alt="search"/>
+            </div>)}
+           
+            {showSelect && (
+            
+                <SelectStyled
                 options={options}
-                onChange={opt => console.log(opt.label, opt.value)}
+                onChange={opt => redirectTo(opt.value)}
+                theme={(theme) => ({
+                    ...theme,
+                    borderRadius: 0,
+                    border: 0,
+                    colors: {
+                        ...theme.colors,
+                        text: 'black',
+                        primary25: 'rgba(64,72,89, 0.5)',
+                         primary: 'black',
+                        neutral0: 'rgb(64,72,89)',
+                        neutral80: '#fff',
+                        neutral50: '#fff'
+                    },
+                })}
             />
+            )}
+            {showSelect && (
+            <div className="exit" onClick={()=> setShowSelect(false)}>
+                <img src={Exit} alt="exit"/>
+            </div>)}
         </HeaderStyled >
     );
 }
 
-export default Navigation;
+export default withRouter(Navigation);

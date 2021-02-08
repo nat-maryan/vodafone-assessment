@@ -4,7 +4,7 @@ import ImageContainer from './components/FirstSection/ImageContainer';
 
 const ImagesWrapper = styled.div`
     display: flex;
-    width: 80%;
+    width: 90%;
     align-items: start;
     justify-content: space-evenly;
     padding-top: 32px;
