@@ -10,6 +10,7 @@ const ImagesWrapper = styled.div`
 
     @media only screen and (max-width: 1024px) {
         flex-wrap: wrap;
+        justify-content: center;
     }
  
     .second-group {
