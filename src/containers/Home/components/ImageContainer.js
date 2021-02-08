@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Eye from '../../../assets/eye.png';
 
 const ImageStyled = styled.div`
     width: 365px;
@@ -22,7 +23,9 @@ const ImageContainer = ({image, className}) => {
         <ImageStyled className={className} style={{
             backgroundImage: `url(${image.img})`
           }}>
-            <div>Eye</div>
+            <div>
+                <img src={Eye} alt="eye"/>
+            </div>
             <div>{image.title}</div>
             <div>______</div>
 

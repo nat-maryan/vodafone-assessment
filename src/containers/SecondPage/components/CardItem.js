@@ -5,14 +5,18 @@ import icon3 from '../../../assets/icon3.png';
 
 
 const CardContainer = styled.div`
-    width: 270px;
-height: 288px;
+    width: 310px;
+height: 320px;
 box-shadow: 0 20px 70px rgba(0, 0, 0, 0.05);
 border-radius: 7px;
 background-color: #ffffff;
 margin: 18px;
 text-align: center;
-padding: 50px 42px;
+padding: 0 34px;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+flex-direction: column;
 
 &:hover{
     background-color: #1d2b37;
@@ -23,7 +27,7 @@ padding: 50px 42px;
 .card-title {
     font-size: 18px;
 font-weight: 400;
-margin: 25px 0;
+/* margin: 25px 0; */
 }
 
 .card-desc {
@@ -32,7 +36,7 @@ font-weight: 400;
 font-style: normal;
 letter-spacing: normal;
 line-height: 29px;
-margin-bottom: 50px;
+/* margin-bottom: 50px; */
 }
 
 a{
