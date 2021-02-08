@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import Input from './Input';
+import {validatePhoneNumber, validateEmail, validatePassword} from '../../../helpers/validationHelpers';
+
 
 const FormStyled = styled.form`
     width: 100%;
@@ -16,6 +18,7 @@ const ButtonStyled = styled.button`
 `;
 
 const Form = ({ buttonText, formLabels, formText }) => {
+    const [valid, setValid] = useState(true);
     const [phone, setPhone] = useState({
         value: '',
         error: true,
@@ -71,23 +74,32 @@ const Form = ({ buttonText, formLabels, formText }) => {
                 notValidMessage: formInputMessages[inputName].required
             });
         }
-        // if (inputName === 'name' && !validateMotherName(value)) {
-        //     return setInput({
-        //         ...input,
-        //         value,
-        //         error: true,
-        //         notValidMessage: formInputMessages[inputName].invalid
-        //     });
-        // }
+        if (inputName === 'phone' && !validatePhoneNumber(value)) {
+            return setInput({
+                ...input,
+                value,
+                error: true,
+                notValidMessage: formInputMessages[inputName].invalid
+            });
+        }
 
-        // if (inputName === 'birthdate' && !validateBirthdate(value)) {
-        //     return setInput({
-        //         ...input,
-        //         value,
-        //         error: true,
-        //         notValidMessage: formInputMessages[inputName].invalid
-        //     });
-        // }
+        if (inputName === 'email' && !validateEmail(value)) {
+            return setInput({
+                ...input,
+                value,
+                error: true,
+                notValidMessage: formInputMessages[inputName].invalid
+            });
+        }
+
+        if (inputName === 'password' && !validatePassword(value)) {
+            return setInput({
+                ...input,
+                value,
+                error: true,
+                notValidMessage: formInputMessages[inputName].invalid
+            });
+        }
 
         return setInput({
             ...input,
@@ -96,6 +108,14 @@ const Form = ({ buttonText, formLabels, formText }) => {
             notValidMessage: ''
         });
     };
+
+    const validateForm = () => {
+        if (phone.error || email.error || password.error){
+            return setValid(false);
+        }
+
+        return setValid(true);
+    }
 
     return (
         <>
@@ -109,6 +129,7 @@ const Form = ({ buttonText, formLabels, formText }) => {
                     touch={phone.touch}
                     error={phone.error ? phone.notValidMessage : false}
                     value={phone.value}
+                    valid={valid}
                     onChange={(e) => {
                         handleInputChange(
                             e.target.value,
@@ -129,6 +150,7 @@ const Form = ({ buttonText, formLabels, formText }) => {
                     touch={email.touch}
                     error={email.error ? email.notValidMessage : false}
                     value={email.value}
+                    valid={valid}
                     onChange={(e) => {
                         handleInputChange(
                             e.target.value,
@@ -149,6 +171,7 @@ const Form = ({ buttonText, formLabels, formText }) => {
                     touch={password.touch}
                     error={password.error ? password.notValidMessage : false}
                     value={password.value}
+                    valid={valid}
                     onChange={(e) => {
                         handleInputChange(
                             e.target.value,
@@ -165,7 +188,8 @@ const Form = ({ buttonText, formLabels, formText }) => {
                 <ButtonStyled
                     id="submit"
                     data-testid="form_submit_btn"
-                    type="submit"
+                    type="click"
+                    onClick={()=> validateForm()}
                 >{buttonText}</ButtonStyled>
             </FormStyled>
         </>

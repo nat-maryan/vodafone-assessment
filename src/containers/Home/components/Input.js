@@ -16,7 +16,7 @@ const FormHelperText = styled.p`
     font-size: 12px;
 `;
 
-const Input = ({ formLabel, value, name, onChange, error, touch, onFocusOut }) => {
+const Input = ({ formLabel, value, name, onChange, error, touch, onFocusOut, valid }) => {
   return (
     <InputContainer>
 
@@ -32,7 +32,7 @@ const Input = ({ formLabel, value, name, onChange, error, touch, onFocusOut }) =
         }
       />
 
-      {!!touch && !!error && (
+      {!!touch && !!error && valid && (
         <FormHelperText data-testid={`error_${name}`}>{error}</FormHelperText>
       )}
     </InputContainer>
