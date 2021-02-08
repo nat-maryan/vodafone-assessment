@@ -24,7 +24,6 @@ const SecondSectionContainer = styled.div`
 `;
 
 const SecondSection = ({ data }) => {
-    console.log(data);
     const { buttonText, formLabels, formText, title, stats, graphText } = data;
     return (
         <SecondSectionContainer>

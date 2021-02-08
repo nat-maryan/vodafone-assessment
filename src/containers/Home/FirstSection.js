@@ -1,4 +1,3 @@
-import map from 'lodash/map';
 import styled from 'styled-components';
 import ImageContainer from './components/FirstSection/ImageContainer';
 
@@ -28,7 +27,7 @@ const FirstSection = ({ data }) => {
     const renderImages = (imgData) => {
         let toBeRendered = [];
         for (let i = 1; i < imgData.length; i++) {
-            toBeRendered.push(<ImageContainer image={imgData[i]} />);
+            toBeRendered.push(<ImageContainer key={i} image={imgData[i]} />);
 
         }
         return toBeRendered;

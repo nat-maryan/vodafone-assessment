@@ -15,9 +15,9 @@ const PageContainer = styled.div`
     .page-title {
         color: #071e57;
         text-align: center;
-font-size: 32px;
-font-weight: 400;
-padding-bottom: 100px;
+        font-size: 32px;
+        font-weight: 400;
+        padding-bottom: 100px;
     }
 
 `;
@@ -42,7 +42,7 @@ const SecondPage = () => {
 
         } catch (e) {
             console.log('Could not retrieve Data');
-             setError(true);
+            setError(true);
         }
     };
 

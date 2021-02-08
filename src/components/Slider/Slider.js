@@ -55,7 +55,6 @@ const Slider = () => {
             sliderItems = await APIService.getSliderItems();
             setSliderItems(sliderItems.data);
             showSlides(sliderIndex);
-            console.log(sliderItems);
 
         } catch {
             console.log('Could not retrieve Menu Items');
