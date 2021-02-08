@@ -12,6 +12,18 @@ const ImageStyled = styled.div`
    flex-direction: column;
    font-size: 16px;
    font-weight: bold;
+   background-color: rgba(36,152,235, 1);
+   cursor: pointer;
+
+   &:hover {
+       background-image:${(props) => `url(${props.image.img})`}
+
+       
+   }
+
+   &:hover div {
+       display: none;
+   }
 
     &.column {
         height: 550px;
@@ -20,9 +32,7 @@ const ImageStyled = styled.div`
 
 const ImageContainer = ({image, className}) => {
     return (
-        <ImageStyled className={className} style={{
-            backgroundImage: `url(${image.img})`
-          }}>
+        <ImageStyled image={image} className={className}>
             <div>
                 <img src={Eye} alt="eye"/>
             </div>
