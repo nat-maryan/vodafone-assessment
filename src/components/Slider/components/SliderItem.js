@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const SliderItemContainer = styled.div`
-    height: 190px;
+    height: 210px;
 
     .title {
         font-size: 52px;

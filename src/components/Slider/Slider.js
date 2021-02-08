@@ -1,48 +1,10 @@
-import styled from 'styled-components';
 import APIService from './../../services/ApiService';
 import { useEffect, useState } from 'react';
 import map from 'lodash/map';
 import ErrorComponent from './../ErrorComponent';
 import SliderItem from './components/SliderItem';
+import { SliderWrapper, SliderContainer, SliderBullets } from './SliderStyles';
 
-const SliderWrapper = styled.div`
-    position: relative;
-`;
-
-const SliderContainer = styled.div`
-    width: 100%;
-    background-color:rgb(64, 72,89);
-    color: #fff;
-    margin:auto;
-    position:relative;
-    text-align: center;
-`;
-
-const SliderBullets = styled.div`
-    background-color: transparent;
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, 0);
-
-    .dot {
-        cursor: pointer;
-    height: 10px;
-    width: 10px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    border-color: #fff;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-    }
-
-    .active,
-.dot:hover {
-  background-color: rgb(36, 152, 235);
-}
-
-`;
 
 const Slider = () => {
     const [sliderItems, setSliderItems] = useState([]);
@@ -64,14 +26,14 @@ const Slider = () => {
 
     const currentSlide = (n) => {
         showSlides(n);
-       
+
     }
 
     function showSlides(n) {
         let i;
         const slides = document.getElementsByClassName("slider-item");
         const dots = document.getElementsByClassName("dot");
-     
+
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
@@ -81,7 +43,7 @@ const Slider = () => {
         slides[n - 1].style.display = "block";
         dots[n - 1].className += " active";
         setSliderIndex(n);
-      
+
     }
 
 
@@ -117,7 +79,7 @@ const Slider = () => {
             <SliderBullets>
                 {map(sliderItems, (item, index) => {
                     return (
-                        <span key={index} className="dot" onClick={()=>currentSlide(index+1)}></span>
+                        <span key={index} className="dot" onClick={() => currentSlide(index + 1)}></span>
                     )
                 })}
             </SliderBullets>

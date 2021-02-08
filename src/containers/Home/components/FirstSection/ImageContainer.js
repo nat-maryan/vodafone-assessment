@@ -4,21 +4,19 @@ import Eye from '../../../../assets/eye.png';
 const ImageStyled = styled.div`
     width: 365px;
     height: 268px;
-    margin: 15px 0 0;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   color: #fff;
-   flex-direction: column;
-   font-size: 16px;
-   font-weight: bold;
-   background-color: rgba(36,152,235, 1);
-   cursor: pointer;
+    margin: 15px 15px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(36,152,235, 1);
+    cursor: pointer;
 
    &:hover {
-       background-image:${(props) => `url(${props.image.img})`}
-
-       
+       background-image:${(props) => `url(${props.image.img})`} 
    }
 
    &:hover div {
@@ -38,7 +36,6 @@ const ImageContainer = ({image, className}) => {
             </div>
             <div>{image.title}</div>
             <div>______</div>
-
         </ImageStyled>
     )
 }

@@ -182,6 +182,7 @@ const Form = ({ buttonText, formLabels, formText }) => {
                     error={password.error ? password.notValidMessage : false}
                     value={password.value}
                     valid={valid}
+                    type='password'
                     onChange={(e) => {
                         handleInputChange(
                             e.target.value,

@@ -17,7 +17,7 @@ const FormHelperText = styled.p`
     font-size: 12px;
 `;
 
-const Input = ({ formLabel, value, name, onChange, error, touch, onFocusOut, valid }) => {
+const Input = ({ formLabel, value, name, onChange, error, touch, onFocusOut, valid, ...props }) => {
   return (
     <InputContainer>
 
@@ -31,6 +31,7 @@ const Input = ({ formLabel, value, name, onChange, error, touch, onFocusOut, val
           onFocusOut();
         }
         }
+        {...props}
       />
 
       {!!touch && !!error && !valid && (

@@ -19,7 +19,6 @@ const PageContainer = styled.div`
         font-weight: 400;
         padding-bottom: 100px;
     }
-
 `;
 
 const CardsContainer = styled.div`

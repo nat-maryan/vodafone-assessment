@@ -18,32 +18,31 @@ const CardContainer = styled.div`
     justify-content: space-evenly;
     flex-direction: column;
 
-&:hover{
-    background-color: #1d2b37;
-    cursor: pointer;
-    color: #ffffff;
-}
+    &:hover{
+        background-color: #1d2b37;
+        cursor: pointer;
+        color: #ffffff;
+    }       
 
-.card-title {
-    font-size: 18px;
-    font-weight: 400;
-}
+    .card-title {
+        font-size: 18px;
+        font-weight: 400;
+    }
 
-.card-desc {
-    font-size: 16px;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: normal;
-    line-height: 29px;
-}
+    .card-desc {
+        font-size: 16px;
+        font-weight: 400;
+        font-style: normal;
+        letter-spacing: normal;
+        line-height: 29px;
+    }
 
-a{
-    text-decoration:none;
-    color: #0077cc;
-    font-size: 16px;
-    font-weight: 400;
-
-}
+    a{
+        text-decoration:none;
+        color: #0077cc;
+        font-size: 16px;
+        font-weight: 400;
+    }
 `;
 
 

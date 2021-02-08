@@ -5,19 +5,24 @@ const ImagesWrapper = styled.div`
     display: flex;
     width: 90%;
     align-items: start;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding-top: 32px;
 
     @media only screen and (max-width: 1024px) {
         flex-wrap: wrap;
     }
  
-
     .second-group {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
-    justify-content: space-evenly;
+        align-items: start;
+        justify-content: start;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .second-group {
+            justify-content: center;
+        }
     }
 `;
 
@@ -28,12 +33,9 @@ const FirstSection = ({ data }) => {
         let toBeRendered = [];
         for (let i = 1; i < imgData.length; i++) {
             toBeRendered.push(<ImageContainer key={i} image={imgData[i]} />);
-
         }
         return toBeRendered;
     }
-
-
 
     return (
         <ImagesWrapper>
@@ -43,7 +45,6 @@ const FirstSection = ({ data }) => {
             <div className="second-group">
                 {renderImages(images)}
             </div>
-
         </ImagesWrapper>
     )
 }

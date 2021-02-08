@@ -16,10 +16,9 @@ const HomeContainer = styled.div`
     .page-title {
         color: #071e57;
         text-align: center;
-font-size: 32px;
-font-weight: 400;
+        font-size: 32px;
+        font-weight: 400;
     }
-
 `;
 
 const SectionsNavBar = styled.ul`

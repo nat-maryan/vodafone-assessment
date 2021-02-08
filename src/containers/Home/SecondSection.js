@@ -3,8 +3,6 @@ import Form from './components/SecondSection/Form';
 import styled from 'styled-components';
 import GraphSliderContainer from './components/SecondSection/GraphSliderContainer';
 
-
-
 const SecondSectionContainer = styled.div`
     display: flex;
     text-align: center;
@@ -27,7 +25,6 @@ const SecondSection = ({ data }) => {
     const { buttonText, formLabels, formText, title, stats, graphText } = data;
     return (
         <SecondSectionContainer>
-    
             <div className="content">
                 <GraphSliderContainer title={title} stats={stats} graphText={graphText} />
             </div>
