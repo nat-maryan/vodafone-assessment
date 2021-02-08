@@ -22,10 +22,10 @@ export const SliderBullets = styled.div`
 
     .dot {
         cursor: pointer;
-        height: 10px;
-        width: 10px;
-        margin: 0 2px;
-        background-color: #bbb;
+        height: 12px;
+        width: 12px;
+        margin: 0 3px;
+        background-color: transparent;
         border-radius: 50%;
         border: 1px solid #fff;
         display: inline-block;
